@@ -90,7 +90,7 @@ export default {
             this.loading = true;
             try {
                 const token = localStorage.getItem('token')
-                const response = await axios.get('http://localhost:8000/api/tasks', {
+                const response = await axios.get('https://taskmgt-back.onrender.com/api/tasks', {
                     headers:{
                         Authorization: `Bearer ${token}`
                     }
@@ -109,7 +109,7 @@ export default {
             if (confirm('Are you sure you want to delete this task?')){
                 try{
                     const token = localStorage.getItem('token')
-                    await axios.delete(`http://localhost:8000/api/tasks/${id}`, {
+                    await axios.delete(`https://taskmgt-back.onrender.com/api/tasks/${id}`, {
                     headers:{
                        Authorization: `Bearer ${token}`
                     }
