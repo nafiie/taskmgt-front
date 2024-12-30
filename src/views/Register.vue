@@ -42,7 +42,7 @@
           <span v-else>
           Register</span>
         </button>
-        <p class="mt-4 ">Don't have an account? <router-link to="/login" class="font-extrabold text-green-900">Login</router-link></p> 
+        <p class="mt-4 ">Already have an account? <router-link to="/login" class="font-extrabold text-green-900">Login</router-link></p> 
       </form>
         <div class="mt-4 p-2 text-center">
           <p :class="{'text-green-500': success, 'text-red-500': !success}">{{ message }}</p>

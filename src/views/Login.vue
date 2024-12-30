@@ -11,10 +11,6 @@
                 <router-link to="/dashboard" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm  font-md">Dashboard</router-link>
                 <router-link to="/newtask" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm  font-md">New Task</router-link>
               </div>
-                 
-               <div v-else>
-             <button @click="logout" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm  font-md">Logout</button>
-            </div>
               
                 </div>
             </div>
