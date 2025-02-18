@@ -80,7 +80,7 @@ export default {
               this.loading = true;
                 try {
                     const token = localStorage.getItem('token')
-                    const response = await axios.post('https://taskmgt-back.onrender.com/api/tasks', {
+                    const response = await axios.post('http://localhost:8000/api/tasks', {
               title: this.title,
               description: this.description,
               status: this.status,

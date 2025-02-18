@@ -76,7 +76,7 @@
           async registerUser(){
             this.loading = true;
             try {
-              const response = await axios.post('https://taskmgt-back.onrender.com/api/users', {
+              const response = await axios.post('http://localhost:8000/api/users', {
               name: this.name,
               email: this.email,
               password: this.password,

@@ -16,8 +16,6 @@ const routes = [
   { path: '/dashboard',component: Dashboard, meta:{requiresAuth: true}},
   { path: '/newtask',component: Newtask, meta:{requiresAuth: true}},
   { path: '/dashboard/edit/:id',component: Edittask, props: true, meta:{requiresAuth: true}  }
- 
-
 ]
 
 const router = createRouter({

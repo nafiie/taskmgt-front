@@ -84,7 +84,7 @@
             async fetchTask(){
                 try {
                     const token = localStorage.getItem('token')
-                    const response = await axios.get(`https://taskmgt-back.onrender.com/api/tasks/${this.$route.params.id}`, {
+                    const response = await axios.get(`http://localhost:8000/api/tasks/${this.$route.params.id}`, {
                     headers:{
                         Authorization: `Bearer ${token}`
                     }
@@ -103,7 +103,7 @@
                 this.loading = true
                 try {
                     const token = localStorage.getItem('token')
-                    const response = await axios.put(`https://taskmgt-back.onrender.com/api/tasks/${this.$route.params.id}`, this.task, {
+                    const response = await axios.put(`http://localhost:8000/api/tasks/${this.$route.params.id}`, this.task, {
                     headers:{
                         Authorization: `Bearer ${token}`
                         }
