@@ -51,7 +51,7 @@
            <td class="px-4 py-2 border">{{task.status}}</td>
            <td class="px-4 py-2 border">{{ formatDate (task.due_date) }}</td>
            <td class="px-4 py-2 border flex space-x-5">
-           <router-link :to="`/dashboard/edit/${task._id}`" class="bg-blue-500 text-white font-bold px-6 py-1 rounded" @click="updateTask">Edit</router-link>
+           <router-link :to="`/dashboard/edit/${task._id}`" class="bg-blue-500 text-white font-bold px-6 py-1 rounded">Edit</router-link>
            <button class="bg-red-500 text-white font-bold px-4 py-1 rounded" @click="deleteTasks(task._id)"> Delete </button>
            </td>
        </tr>
@@ -63,6 +63,8 @@
 
 <script>
 import axios from "axios"
+import moment from 'moment'
+
 export default {
     data(){
         return{
@@ -77,7 +79,8 @@ export default {
         }
     },
   
-      
+    methods:{
+
         async fetchTasks(){
             this.loading = true;
             try {
@@ -100,11 +103,12 @@ export default {
             }
             
         },
+
         async deleteTasks(id){
             if (confirm('Are you sure you want to delete this task?')){
                 try{
                     const token = localStorage.getItem('token')
-                    await axios.delete(`http://localhost:8000/api/tasks${id}`, {
+                    await axios.delete(`http://localhost:8000/api/tasks/${id}`, {
                     headers:{
                        Authorization: `Bearer ${token}`
                     }
@@ -117,17 +121,27 @@ export default {
                 }
            } 
         },
+
         logout(){
             localStorage.removeItem('token')
             this.$toast.success('logged out Successfully!!!');
             this.$router.push('/login')
         },
+        
         register(){
             this.$router.push('/login')
         },
 
+        formatDate(value){
+            if (value) {
+                return moment(String(value)).format('YYYY-MM-DD')
+            }
+        }
+    },
+      
+
     created(){
-        this.fetchTask();
+        this.fetchTasks();
     },
 
     }

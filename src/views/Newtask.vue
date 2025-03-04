@@ -78,26 +78,30 @@ export default {
     methods:{
             async createTask(){
               this.loading = true;
-                try {
-                    const token = localStorage.getItem('token')
-                    const response = await axios.post('http://localhost:8000/api/tasks', {
-              title: this.title,
-              description: this.description,
-              status: this.status,
-              due_date: this.due_date,
-              }); 
-              
-              this.message = 'Created successfully!';
-              this.success = true;
-              this.$toast.success('Task created successfully!!!');
-              this.$router.push('/dashboard');
-              
-              this.title = '';
-              this.description = '';
-              this.status = '';
-              this.due_date = '';
-            
-            } catch (error) {
+              try {
+                const token = localStorage.getItem('token');
+                const response = await axios.post('http://localhost:8000/api/tasks', {
+                    title: this.title,
+                    description: this.description,
+                    status: this.status,
+                    due_date: this.due_date,
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                this.message = 'Created successfully!';
+                this.success = true;
+                this.$toast.success('Task created successfully!!!');
+                this.$router.push('/dashboard');
+
+                this.title = '';
+                this.description = '';
+                this.status = '';
+                this.due_date = '';
+
+        } catch (error) {
               console.error('Error during creation:', error);
             this.message = 'Registration failed. Please try again.';
             this.success = false;
